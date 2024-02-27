@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+<head th:replace="/fragments/head :: head">
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="/images/IMG_20240128_093141 copy 2.jpg" alt="">
+    </div>
+    <header th:replace="/fragments/header :: header">
+  </div>
+
+  <!-- home section -->
+  <div class="container">
+  <form action="/" method="get">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <span class="navbar-brand">Sort by: </span>
+        <ul class="navbar-nav">
+          <li class="nav-item active" style="padding-right: 20px;">
+            <div class="dropdown" style="padding-top: 10px;">
+                <select class="form-select" aria-label="Default select" name="sort_by">
+                  <option value="createdAt" th:selected="${sort_by == 'createdAt'}">Created date</option>
+                  <option value="updatedAt" th:selected="${sort_by == 'updatedAt'}">Updated date</option>
+                </select>
+            </div>
+          </li>
+
+      <span class="navbar-brand">Per page: </span>
+        <ul class="navbar-nav">
+          <li class="nav-item active" style="padding-right: 20px;">
+            <div class="dropdown" style="padding-top: 10px;">
+              <select class="form-select" aria-label="Default select" name="per_page">
+                <option value="2" th:selected="${per_page == '2'}">2</option>
+                <option value="5" th:selected="${per_page == '5'}">5</option>
+                <option value="10" th:selected="${per_page == '10'}">10</option>
+                <option value="15" th:selected="${per_page == '15'}">15</option>
+              </select> 
+            </div>
+          </li>
+        
+          <li class="nav-item active" style="padding-right: 20px;">
+            <div class="input-group-prepend">
+              <button class="btn btn-info" type="submit" id="dropdownMenuButton">
+                Apply filter(s)
+              </button>
+            </div>
+          </li>
+        </ul>
+    </nav>
+  </form>
+  </div>
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="posts" th:each="post : ${posts}">
+        <h3><a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a></h3>
+        <h5 th:text="'Author: ' + ${post.account.firstName} + ' | ' + ${#temporals.format(post.createdAt, 'dd-MM-yyyy')}"></h5>
+        <p th:utext="${post.body}"></p>
+        <hr color="#F87D09"/>
+      </div>
+    </div>
+
+    <nav th:if="${links ne null}" aria-label="...">
+      <ul class="pagination justify-content-center">
+        <th:block th:each="link: ${links}">
+          <li class="page-item">
+            <th:block th:utext="${link}">link to page</th:block>
+          </li>
+      </ul>
+    </nav>
+
+  </section>
+
+<footer th:replace="/fragments/footer :: footer">
+
+  <!-- end home section -->
+
+</body>
+
+</html>

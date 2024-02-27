@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+
+    <!-- header section -->
+    <header class="header_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" th:href="@{/}">
+              <span>
+                Jesus Is Lord
+              </span>
+            </a>
+  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav  mx-auto ">
+                <li class="nav-item ">
+                  <a class="nav-link" th:href="@{/}"><strong>Home </strong></a>
+                </li>
+                <span sec:authorize="!isAuthenticated()">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}"><strong>Register</strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="!isAuthenticated()">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><strong>Log In</strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="isAuthenticated()">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/profile}"><strong>Profile </strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="isAuthenticated()">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/posts/add}"><strong>Add Post </strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="hasRole('ROLE_ADMIN')">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin}"><strong>Admin </strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="hasAuthority('ACCESS_ADMIN_PANEL')">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin}"><strong>Admin </strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_EDITOR')">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/editor}"><strong>Editor </strong></a>
+                  </li>
+                </span>
+                <span sec:authorize="isAuthenticated()">
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}"><strong>Log Out </strong></a>
+                  </li>
+                </span>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+
+</html>

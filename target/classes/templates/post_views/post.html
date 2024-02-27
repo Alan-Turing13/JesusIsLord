@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/head :: head">
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="/images/IMG_20240128_093141 copy 2.jpg" alt="">
+    </div>
+<header th:replace="/fragments/header :: header">
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><em>Irreversible</em></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">having second thoughts</button>
+          <a th:href="@{'/post/' + ${post.id} + '/delete'}" class="btn btn-danger" role="button" aria-pressed="true">Yes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- post section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+        <div class="post">
+            <h3 th:text="${post.title}"></h3>
+            <h5>
+              <span th:text="'Author: ' + ${post.account.firstName}"></span>
+            </h5>
+            <p>
+              <em>Created at: </em>
+              <em th:text="${#temporals.format(post.createdAt, 'HH:mm dd-MM-yyyy')}"></em>
+               | 
+              <em>Last edit: </em>
+              <em th:text="${#temporals.format(post.updatedAt, 'HH:mm dd-MM-yyyy')}"></em>
+            </p>
+            <p th:utext="${post.body}"></p>
+            <hr color="#F87D09"/>
+            <div sec:authorize="isAuthenticated()" th:if="${isOwner}">
+              <a th:href="@{'/post/' + ${post.id} + '/edit'}" class="btn btn-warning" role="button" aria-pressed="true">Edit</a>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                Delete
+              </button> 
+            </div> 
+        </div> 
+    </div>
+  </section>
+<footer th:replace="/fragments/footer :: footer">
+
+  <!-- end about section -->
+
+</body>
+
+</html>
