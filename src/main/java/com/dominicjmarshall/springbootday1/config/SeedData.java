@@ -48,16 +48,16 @@ public class SeedData implements CommandLineRunner{
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        account01.setEmail("dominicjmarshall@gmail.com");
+        account01.setEmail("account01@gmail.com");
         account01.setPassword("12345678910");
-        account01.setFirstName("Dominic");
-        account01.setLastName("Marshall");
+        account01.setFirstName("Herman");
+        account01.setLastName("Melville");
         account01.setGender("Male");
         account01.setAge(34);
         account01.setBirthday(LocalDate.parse("13-04-1989", dateFormat));     
 
-        account02.setEmail("maxmiffy@gmail.com");
-        account02.setPassword("analcleanse");
+        account02.setEmail("mavenoshea@gmail.com");
+        account02.setPassword("datawipe");
         account02.setFirstName("Maven");
         account02.setLastName("O'Shea");
         account02.setGender("Female");
@@ -68,7 +68,7 @@ public class SeedData implements CommandLineRunner{
         account03.setEmail("imanshumpert@gmail.com");
         account03.setPassword("perpendicular");
         account03.setFirstName("Iman");
-        account03.setLastName("Shumpy");
+        account03.setLastName("Shumpert");
         account03.setGender("Male");
         account03.setAge(27);
         account03.setBirthday(LocalDate.parse("29-01-1997", dateFormat)); 
