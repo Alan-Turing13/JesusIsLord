@@ -5,6 +5,7 @@ from what I would have expected, so this was informative.
 
 You'll need a secret.properties file in the resources folder to configure the H2 database and the 
 email address for smtp. It should look like this:
+
 '''
 spring.datasource.username={blah}
 spring.datasource.password={blah}
