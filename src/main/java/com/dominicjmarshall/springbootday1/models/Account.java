@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -60,7 +63,8 @@ public class Account {
 
     // one-to-one relationship.
     private String role;
-    
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
 
@@ -69,6 +73,7 @@ public class Account {
     
     private LocalDateTime passwordResetTokenExpiry;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name="account_authority",
