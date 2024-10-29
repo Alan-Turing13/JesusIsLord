@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 import com.dominicjmarshall.springbootday1.models.Account;
 import com.dominicjmarshall.springbootday1.models.Authority;
 import com.dominicjmarshall.springbootday1.models.Post;
-import com.dominicjmarshall.springbootday1.services.AccountService;
-import com.dominicjmarshall.springbootday1.services.AuthorityService;
-import com.dominicjmarshall.springbootday1.services.PostService;
+import com.dominicjmarshall.springbootday1.service.AccountService;
+import com.dominicjmarshall.springbootday1.service.AuthorityService;
+import com.dominicjmarshall.springbootday1.service.PostService;
 import com.dominicjmarshall.springbootday1.util.constants.Privileges;
 import com.dominicjmarshall.springbootday1.util.constants.Roles;
 
@@ -230,7 +230,7 @@ public class SeedData implements CommandLineRunner{
                 The king at your right hand, O Lord,
                 shall smite down kings in the day of his wrath. 
 
-                6In all his majesty, he shall judge among the nations,
+                In all his majesty, he shall judge among the nations,
                 smiting heads over all the wide earth.
 
                 He shall drink from the brook beside the way;
