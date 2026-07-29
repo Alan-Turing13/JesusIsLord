@@ -1,17 +1,15 @@
-A CRUD app in Spring Boot. I decided to build a Christian blog as an example.
+# Christian Blog Platform (Spring Boot & Spring Security)
 
-Configuring the uploads folder to store user profile pictures was a different process in Spring Boot
-from what I would have expected, so this was informative. 
+![Landing page](src/main/resources/static/example/JiL-landing-page.png)
 
-You'll need a secret.properties file in the resources folder to configure the H2 database and the 
-email address for smtp. It should look like this:
+A full-stack content management system built with Spring Boot, featuring 
 
-'''
-spring.datasource.username={blah}
-spring.datasource.password={blah}
+• Role-based access control (Spring Security)
 
-spring.mail.username={blah@blah.com}
-spring.mail.password={blah}
-'''
+• Database relationships (Jakarta Persistence)
 
-Change SeedData.java to specify whatever user information you want. 
+• Automated email delivery (`JavaMailSender`)
+
+• REST endpoints (Spring Web)
+
+• Custom user avatar resource uploads (`WebMvcConfigurer`)
